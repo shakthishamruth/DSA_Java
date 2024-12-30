@@ -43,9 +43,8 @@ class Node {
 
     public static void addFront(int data, Node head) {
         Node newNode = new Node(data);
-        Node temp = head.next;
+        newNode.next = head.next;
         head.next = newNode;
-        newNode.next = temp;
     }
 }
 
@@ -59,7 +58,7 @@ public class SingleLinkList {
 
         while (running) {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Choose: " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
+            System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
