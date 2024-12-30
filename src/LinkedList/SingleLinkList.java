@@ -3,8 +3,8 @@ package LinkedList;
 import java.util.Scanner;
 
 class Node {
-    int data;
-    Node next;
+    private int data;
+    private Node next;
 
     public Node(int data) {
         this.data = data;
@@ -14,6 +14,32 @@ class Node {
     public Node() {
         this.next = null;
     }
+
+    public static void add(int data, Node head) {
+        Node newNode = new Node(data);
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+
+    public static void view(Node head) {
+        if (head.next == null) {
+            System.out.println("List is empty!");
+        } else {
+            System.out.print("List: ");
+            Node temp = head.next;
+            int count = 0;
+            while (temp != null) {
+                System.out.print(temp.data + " → ");
+                count++;
+                temp = temp.next;
+            }
+            System.out.println("null");
+            System.out.printf("Size of Linked List: %d \n", count);
+        }
+    }
 }
 
 public class SingleLinkList {
@@ -22,7 +48,6 @@ public class SingleLinkList {
         boolean running = true;
         Node head = new Node();
         Scanner sc = new Scanner(System.in);
-        Node temp;
 
         while (running) {
             System.out.println("--------------------------------------");
@@ -30,34 +55,19 @@ public class SingleLinkList {
             int c = sc.nextInt();
             switch (c) {
                 case 1:
-                    if (head.next == null) {
-                        System.out.println("List is empty!");
-                    } else {
-                        System.out.print("List: ");
-                        temp = head.next;
-                        int count = 0;
-                        while (temp != null) {
-                            System.out.print(temp.data + " → ");
-                            count++;
-                            temp = temp.next;
-                        }
-                        System.out.println("null");
-                        System.out.printf("Size of Linked List: %d \n", count);
-                    }
+                    Node.view(head);
                     break;
                 case 2:
                     System.out.print("Enter data to add:");
                     int data = sc.nextInt();
-                    Node newNode = new Node(data);
-                    temp = head;
-                    while (temp.next != null) {
-                        temp = temp.next;
-                    }
-                    temp.next = newNode;
+                    Node.add(data, head);
                     break;
                 case 0:
                     System.out.println("Exiting...");
                     running = false;
+                    break;
+                default:
+                    System.out.println("Incorrect Option Try Again!");
                     break;
             }
         }
