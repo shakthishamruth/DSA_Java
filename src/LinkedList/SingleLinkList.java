@@ -27,18 +27,19 @@ class Node {
     public static void view(Node head) {
         if (head.next == null) {
             System.out.println("List is empty!");
-        } else {
-            System.out.print("List: ");
-            Node temp = head.next;
-            int count = 0;
-            while (temp != null) {
-                System.out.print(temp.data + " → ");
-                count++;
-                temp = temp.next;
-            }
-            System.out.println("null");
-            System.out.printf("Size of Linked List: %d \n", count);
+            return;
         }
+        System.out.print("List: ");
+        Node temp = head.next;
+        int count = 0;
+        while (temp != null) {
+            System.out.print(temp.data + " → ");
+            count++;
+            temp = temp.next;
+        }
+        System.out.println("null");
+        System.out.printf("Size of Linked List: %d \n", count);
+
     }
 
     public static void addFront(int data, Node head) {
