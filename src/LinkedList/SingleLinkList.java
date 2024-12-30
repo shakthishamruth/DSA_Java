@@ -40,6 +40,13 @@ class Node {
             System.out.printf("Size of Linked List: %d \n", count);
         }
     }
+
+    public static void addFront(int data, Node head) {
+        Node newNode = new Node(data);
+        Node temp = head.next;
+        head.next = newNode;
+        newNode.next = temp;
+    }
 }
 
 public class SingleLinkList {
@@ -48,10 +55,11 @@ public class SingleLinkList {
         boolean running = true;
         Node head = new Node();
         Scanner sc = new Scanner(System.in);
+        int data;
 
         while (running) {
-            System.out.println("--------------------------------------");
-            System.out.println("Choose: " + "[1. View] " + "[2. Add] ");
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Choose: " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -59,8 +67,13 @@ public class SingleLinkList {
                     break;
                 case 2:
                     System.out.print("Enter data to add:");
-                    int data = sc.nextInt();
+                    data = sc.nextInt();
                     Node.add(data, head);
+                    break;
+                case 3:
+                    System.out.println("Enter data to add in front:");
+                    data = sc.nextInt();
+                    Node.addFront(data, head);
                     break;
                 case 0:
                     System.out.println("Exiting...");
