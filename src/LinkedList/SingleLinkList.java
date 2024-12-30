@@ -12,7 +12,6 @@ class Node {
     }
 
     public Node() {
-        this.data = -1;
         this.next = null;
     }
 }
@@ -36,11 +35,14 @@ public class SingleLinkList {
                     } else {
                         System.out.print("List: ");
                         temp = head.next;
-                        while (temp.next != null) {
-                            System.out.print(temp.data + " ");
+                        int count = 0;
+                        while (temp != null) {
+                            System.out.print(temp.data + " → ");
+                            count++;
                             temp = temp.next;
                         }
-                        System.out.println(temp.data);
+                        System.out.println("null");
+                        System.out.printf("Size of Linked List: %d \n", count);
                     }
                     break;
                 case 2:
