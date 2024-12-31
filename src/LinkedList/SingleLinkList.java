@@ -47,6 +47,19 @@ class Node {
         newNode.next = head.next;
         head.next = newNode;
     }
+
+    public static void addPosition(int data, Node head, int pos) {
+        int loop = 1;
+        Node temp = head;
+        while (pos != loop && temp.next != null) {
+            loop++;
+            temp = temp.next;
+        }
+        Node newNode = new Node(data);
+        Node temp2 = temp.next;
+        temp.next = newNode;
+        newNode.next = temp2;
+    }
 }
 
 public class SingleLinkList {
@@ -60,6 +73,7 @@ public class SingleLinkList {
         while (running) {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
+            System.out.println("[4. Add to position]");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -74,6 +88,13 @@ public class SingleLinkList {
                     System.out.println("Enter data to add in front:");
                     data = sc.nextInt();
                     Node.addFront(data, head);
+                    break;
+                case 4:
+                    System.out.println("Enter POSITION you want to enter the data:");
+                    int pos = sc.nextInt();
+                    System.out.println("Enter data to add in position " + pos + " :");
+                    data = sc.nextInt();
+                    Node.addPosition(data, head, pos);
                     break;
                 case 0:
                     System.out.println("Exiting...");
