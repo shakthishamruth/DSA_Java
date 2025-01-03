@@ -1,6 +1,11 @@
 package LinkedList;
 
-import java.util.List;
+/*
+ *
+ * NOTE: The linked list starts from head.next
+ *
+ * */
+
 import java.util.Scanner;
 
 class Node {
@@ -40,7 +45,6 @@ class Node {
         }
         System.out.println("null");
         System.out.printf("Size of Linked List: %d \n", count);
-
     }
 
     public static void addFront(int data, Node head) {
@@ -62,14 +66,29 @@ class Node {
         newNode.next = temp2;
     }
 
-    public static Node delFirst(Node head) {
+    public static void delFirst(Node head) {
         if (head.next == null) {
-            System.out.println("Linked list is empty");
+            System.out.println("Linked list is empty!");
+            return;
         }
-        Node temp = head;
-        head = head.next;
-        temp.next = null;
-        return head;
+        Node temp = head.next;
+        temp = temp.next;
+        head.next = temp;
+    }
+
+    public static void delLast(Node head) {
+        if (head.next == null) {
+            System.out.println("Linked list is empty!");
+            return;
+        }
+        Node prev = head;
+        Node cur = head.next;
+        while (cur.next != null) {
+            prev = cur;
+            cur = cur.next;
+        }
+        System.out.println("Last Node with data - " + cur.data + " deleted!");
+        prev.next = null;
     }
 }
 
@@ -84,7 +103,7 @@ public class SingleLinkList {
         while (running) {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
-            System.out.println("[4. Add to position] " + "[5. Delete 1st Node]");
+            System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -108,7 +127,10 @@ public class SingleLinkList {
                     Node.addPosition(data, head, pos);
                     break;
                 case 5:
-                    head = Node.delFirst(head);
+                    Node.delFirst(head);
+                    break;
+                case 6:
+                    Node.delLast(head);
                     break;
                 case 0:
                     System.out.println("Exiting...");
