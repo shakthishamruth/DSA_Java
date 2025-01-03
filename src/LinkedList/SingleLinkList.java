@@ -90,6 +90,24 @@ class Node {
         System.out.println("Last Node with data - " + cur.data + " deleted!");
         prev.next = null;
     }
+
+    public static void delPos(Node head, int pos) {
+        if (head.next == null) {
+            System.out.println("Linked list is empty!");
+            return;
+        }
+        Node prev = head;
+        Node cur = head.next;
+        int c = 0;
+        while (pos != c && cur.next != null) {
+            prev = cur;
+            cur = cur.next;
+            c++;
+        }
+        prev.next = cur.next;
+        System.out.println("Node on position " + pos + " is deleted with data " + cur.data);
+        cur.next = null;
+    }
 }
 
 public class SingleLinkList {
@@ -99,11 +117,12 @@ public class SingleLinkList {
         Node head = new Node();
         Scanner sc = new Scanner(System.in);
         int data;
-
+        int pos;
         while (running) {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
+            System.out.println("[7. Delete Node at position] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -121,7 +140,7 @@ public class SingleLinkList {
                     break;
                 case 4:
                     System.out.println("Enter POSITION you want to enter the data:");
-                    int pos = sc.nextInt();
+                    pos = sc.nextInt();
                     System.out.println("Enter data to add in position " + pos + " :");
                     data = sc.nextInt();
                     Node.addPosition(data, head, pos);
@@ -131,6 +150,11 @@ public class SingleLinkList {
                     break;
                 case 6:
                     Node.delLast(head);
+                    break;
+                case 7:
+                    System.out.println("Enter POSITION you want to delete the data:");
+                    pos = sc.nextInt();
+                    Node.delPos(head, pos);
                     break;
                 case 0:
                     System.out.println("Exiting...");
