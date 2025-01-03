@@ -1,5 +1,6 @@
 package LinkedList;
 
+import java.util.List;
 import java.util.Scanner;
 
 class Node {
@@ -60,6 +61,16 @@ class Node {
         temp.next = newNode;
         newNode.next = temp2;
     }
+
+    public static Node delFirst(Node head) {
+        if (head.next == null) {
+            System.out.println("Linked list is empty");
+        }
+        Node temp = head;
+        head = head.next;
+        temp.next = null;
+        return head;
+    }
 }
 
 public class SingleLinkList {
@@ -73,7 +84,7 @@ public class SingleLinkList {
         while (running) {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
-            System.out.println("[4. Add to position]");
+            System.out.println("[4. Add to position] " + "[5. Delete 1st Node]");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -95,6 +106,9 @@ public class SingleLinkList {
                     System.out.println("Enter data to add in position " + pos + " :");
                     data = sc.nextInt();
                     Node.addPosition(data, head, pos);
+                    break;
+                case 5:
+                    head = Node.delFirst(head);
                     break;
                 case 0:
                     System.out.println("Exiting...");
