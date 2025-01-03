@@ -152,7 +152,7 @@ public class SingleLinkList {
                     Node.delLast(head);
                     break;
                 case 7:
-                    System.out.println("Enter POSITION you want to delete the data:");
+                    System.out.println("Enter POSITION you want to delete the Node:");
                     pos = sc.nextInt();
                     Node.delPos(head, pos);
                     break;
