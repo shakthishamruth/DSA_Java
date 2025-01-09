@@ -108,6 +108,24 @@ class Node {
         System.out.println("Node on position " + pos + " is deleted with data " + cur.data);
         cur.next = null;
     }
+
+    public static void search(Node head, int data) {
+        if (head.next == null) {
+            System.out.println("The linked list is empty!");
+            return;
+        }
+        Node temp = head.next;
+        int c = 0;
+        while (temp != null) {
+            if (temp.data == data) {
+                System.out.println("The element is found at position: " + c + " !");
+                return;
+            }
+            temp = temp.next;
+            c++;
+        }
+        System.out.println("The element " + data + " is not found in the linked list!");
+    }
 }
 
 public class SingleLinkList {
@@ -122,7 +140,7 @@ public class SingleLinkList {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
-            System.out.println("[7. Delete Node at position] ");
+            System.out.println("[7. Delete Node at position] [8. Search]");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -155,6 +173,11 @@ public class SingleLinkList {
                     System.out.println("Enter POSITION you want to delete the Node:");
                     pos = sc.nextInt();
                     Node.delPos(head, pos);
+                    break;
+                case 8:
+                    System.out.println("Enter the element you want to search: ");
+                    data = sc.nextInt();
+                    Node.search(head, data);
                     break;
                 case 0:
                     System.out.println("Exiting...");
