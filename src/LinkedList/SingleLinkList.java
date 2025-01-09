@@ -145,6 +145,10 @@ class Node {
     }
 
     public static void nthElement(Node head, int n) {
+        if (n <= 0) {
+            System.out.println("Invalid value n: " + n);
+            return;
+        }
         if (head.next == null) {
             System.out.println("Linked list is empty!");
             return;
@@ -181,6 +185,7 @@ public class SingleLinkList {
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
             System.out.println("[7. Delete Node at position] [8. Search] [9. Reverse] ");
+            System.out.println("[10. Get nth node from end] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
