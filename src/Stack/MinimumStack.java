@@ -58,7 +58,7 @@ public class MinimumStack {
                     running = false;
                     break;
                 case 1:
-                    System.out.print("Enter the int to enter: ");
+                    System.out.print("Enter the int to push: ");
                     int in = sc.nextInt();
                     push(in);
                     break;
