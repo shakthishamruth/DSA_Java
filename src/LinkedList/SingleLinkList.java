@@ -126,6 +126,23 @@ class Node {
         }
         System.out.println("The element " + data + " is not found in the linked list!");
     }
+
+    public static void reverse(Node head) {
+        if (head.next == null) {
+            return;
+        }
+        Node current = head.next;
+        Node next = null;
+        Node prev = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head.next = prev;
+    }
 }
 
 public class SingleLinkList {
@@ -140,7 +157,7 @@ public class SingleLinkList {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
-            System.out.println("[7. Delete Node at position] [8. Search]");
+            System.out.println("[7. Delete Node at position] [8. Search] [9. Reverse] ");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -178,6 +195,10 @@ public class SingleLinkList {
                     System.out.println("Enter the element you want to search: ");
                     data = sc.nextInt();
                     Node.search(head, data);
+                    break;
+                case 9:
+                    Node.reverse(head);
+                    System.out.println("Reversing complete!");
                     break;
                 case 0:
                     System.out.println("Exiting...");
