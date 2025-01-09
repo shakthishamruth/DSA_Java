@@ -32,7 +32,7 @@ class Node {
 
     public static void view(Node head) {
         if (head.next == null) {
-            System.out.println("List is empty!");
+            System.out.println("Linked list is empty!");
             return;
         }
         System.out.print("List: ");
@@ -111,7 +111,7 @@ class Node {
 
     public static void search(Node head, int data) {
         if (head.next == null) {
-            System.out.println("The linked list is empty!");
+            System.out.println("Linked list is empty!");
             return;
         }
         Node temp = head.next;
@@ -142,6 +142,29 @@ class Node {
             current = next;
         }
         head.next = prev;
+    }
+
+    public static void nthElement(Node head, int n) {
+        if (head.next == null) {
+            System.out.println("Linked list is empty!");
+            return;
+        }
+        int c = 0;
+        Node temp = head.next;
+        Node main = head.next;
+        while (c < n && temp != null) {
+            temp = temp.next;
+            c++;
+        }
+        if (temp == null) {
+            System.out.println("The element on first from END is " + main.data);
+            return;
+        }
+        while (temp != null) {
+            temp = temp.next;
+            main = main.next;
+        }
+        System.out.println("The element on " + n + " from END is " + main.data);
     }
 }
 
@@ -199,6 +222,11 @@ public class SingleLinkList {
                 case 9:
                     Node.reverse(head);
                     System.out.println("Reversing complete!");
+                    break;
+                case 10:
+                    System.out.println("Enter the POSITION from END to see:");
+                    pos = sc.nextInt();
+                    Node.nthElement(head, pos);
                     break;
                 case 0:
                     System.out.println("Exiting...");
