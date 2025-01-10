@@ -170,6 +170,54 @@ class Node {
         }
         System.out.println("The element on " + n + " from END is " + main.data);
     }
+
+    /*
+     *
+     *   Sorted Link List
+     *
+     * */
+
+    public static void remDupFromSortedArr(Node head) {
+        Node cur = head.next;
+
+        while (cur != null && cur.next != null) {
+            if (cur.data == cur.next.data) {
+                cur.next = cur.next.next;
+            } else {
+                cur = cur.next;
+            }
+        }
+
+        if (head.next == null) {
+            return;
+        }
+        System.out.println("\nRemoved the Duplicates from the sorted array!\n");
+    }
+
+    public static void addInSort(Node head, int data) {
+        Node newNode = new Node(data);
+
+        if (head.next == null) {
+            head.next = newNode;
+            return;
+        }
+        Node cur = head.next;
+        Node temp = null;
+
+        while (cur != null && cur.data < data) {
+            temp = cur;
+            cur = cur.next;
+        }
+
+        if (temp == null) {
+            newNode.next = cur;
+            head.next = newNode;
+            return;
+        }
+
+        newNode.next = cur;
+        temp.next = newNode;
+    }
 }
 
 public class SingleLinkList {
@@ -185,7 +233,8 @@ public class SingleLinkList {
             System.out.println("Choose: " + "[0.Exit] " + "[1. View] " + "[2. Add] " + "[3.Add to Front] ");
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
             System.out.println("[7. Delete Node at position] [8. Search] [9. Reverse] ");
-            System.out.println("[10. Get nth node from end] ");
+            System.out.println("[10. Get nth node from end] [11. Remove duplicates from sorted array]");
+            System.out.println("[12. Add in sort]");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -232,6 +281,16 @@ public class SingleLinkList {
                     System.out.println("Enter the POSITION from END to see:");
                     pos = sc.nextInt();
                     Node.nthElement(head, pos);
+                    break;
+                case 11:
+                    Node.view(head);
+                    Node.remDupFromSortedArr(head);
+                    Node.view(head);
+                    break;
+                case 12:
+                    System.out.println("Enter the ELEMENT to add sort");
+                    data = sc.nextInt();
+                    Node.addInSort(head, data);
                     break;
                 case 0:
                     System.out.println("Exiting...");
