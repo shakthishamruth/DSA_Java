@@ -218,6 +218,10 @@ class Node {
         newNode.next = cur;
         temp.next = newNode;
     }
+
+    public static void removeKey(Node head, int key) {
+        
+    }
 }
 
 public class SingleLinkList {
