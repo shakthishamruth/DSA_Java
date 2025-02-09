@@ -220,7 +220,23 @@ class Node {
     }
 
     public static void removeKey(Node head, int key) {
+        if (head.next == null) {
+            System.out.println("Linked list is empty!");
+            return;
+        }
+        Node temp = head;
+        Node curr = head.next;
+
+        while (curr != null && curr.data != key) {
+            temp = curr;
+            curr = curr.next;
+        }
+
+        if (curr == null) {
+            return;
+        }
         
+        temp.next = curr.next;
     }
 }
 
@@ -238,7 +254,7 @@ public class SingleLinkList {
             System.out.println("[4. Add to position] " + "[5. Delete 1st Node] " + "[6. Delete at end] ");
             System.out.println("[7. Delete Node at position] [8. Search] [9. Reverse] ");
             System.out.println("[10. Get nth node from end] [11. Remove duplicates from sorted array]");
-            System.out.println("[12. Add in sort]");
+            System.out.println("[12. Add in sort] [13. Remove Key]");
             int c = sc.nextInt();
             switch (c) {
                 case 1:
@@ -295,6 +311,11 @@ public class SingleLinkList {
                     System.out.println("Enter the ELEMENT to add sort");
                     data = sc.nextInt();
                     Node.addInSort(head, data);
+                    break;
+                case 13:
+                    System.out.println("Enter the KEY to remove");
+                    data = sc.nextInt();
+                    Node.removeKey(head, data);
                     break;
                 case 0:
                     System.out.println("Exiting...");
