@@ -79,7 +79,7 @@ public class CLL {
         } else {
             last.next = temp.next;
         }
-        temp.next = null;
+        temp.next = null; // can remove this line safely it will be garbage collected by java
         System.out.println(temp.data + " is deleted");
         len--;
     }
