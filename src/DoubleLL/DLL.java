@@ -19,18 +19,24 @@ public class DLL {
             this.prev = null;
         }
 
-        public boolean isEmpty() {
-            return len == 0;
-        }
-
         public int length() {
             return len;
         }
     }
 
+    public DLL() {
+        this.head = null;
+        this.tail = null;
+        this.len = 0;
+    }
+
+    public boolean isEmpty() {
+        return len == 0;
+    }
+
     public void insertLast(int value) {
         Node newNode = new Node(value);
-        if (head == null) {
+        if (isEmpty()) {
             head = newNode;
         } else {
             tail.next = newNode;
@@ -40,11 +46,19 @@ public class DLL {
         len++;
     }
 
-    public DLL() {
-        this.head = null;
-        this.tail = null;
-        this.len = 0;
+    public void insertFirst(int value) {
+        Node newNode = new Node(value);
+        if (isEmpty()) {
+            tail = newNode;
+        } else {
+            head.prev = newNode;
+        }
+
+        newNode.next = head;
+        head = newNode;
+        len++;
     }
+
 
     public void displayForward() {
         if (head == null) {
@@ -72,17 +86,6 @@ public class DLL {
         System.out.print("null");
     }
 
-    public void insertFirst(int value) {
-        Node newNode = new Node(value);
-        if (tail == null) {
-            tail = newNode;
-        } else {
-            head.prev = newNode;
-        }
-
-        newNode.next = head;
-        head = newNode;
-    }
 
     public static void main(String[] args) {
         DLL dll = new DLL();
@@ -94,7 +97,7 @@ public class DLL {
             System.out.println();
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.println("Options: [0. Exit] [1. Display Forward] [2. Display Backward] [3. Insert Last] [4. Insert Front]");
-            
+
             System.out.print("Enter choice: ");
             int ch = sc.nextInt();
             switch (ch) {
