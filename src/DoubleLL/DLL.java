@@ -40,6 +40,7 @@ public class DLL {
             head = newNode;
         } else {
             tail.next = newNode;
+            // newNode.prev = tail;
         }
         newNode.prev = tail;
         tail = newNode;
@@ -53,12 +54,44 @@ public class DLL {
         } else {
             head.prev = newNode;
         }
-
         newNode.next = head;
         head = newNode;
         len++;
     }
 
+    public void delFirst() {
+        if (isEmpty()) {
+            System.out.println("DLL is empty!");
+            return;
+        }
+        Node temp = head;
+        if (head == tail) {
+            tail = null;
+        } else {
+            head.next.prev = null;
+        }
+        head = head.next;
+        temp.next = null;
+        System.out.println(temp.data + " is deleted");
+        len--;
+    }
+
+    public void delLast() {
+        if (isEmpty()) {
+            System.out.println("DLL");
+            return;
+        }
+        Node temp = tail;
+        if (head == tail) {
+            head = null;
+        } else {
+            tail.prev.next = null;
+        }
+        tail = tail.prev;
+        temp.prev = null;
+        System.out.println(temp.data + " is deleted");
+        len--;
+    }
 
     public void displayForward() {
         if (head == null) {
@@ -97,6 +130,7 @@ public class DLL {
             System.out.println();
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.println("Options: [0. Exit] [1. Display Forward] [2. Display Backward] [3. Insert Last] [4. Insert Front]");
+            System.out.println("[5. Delete at Front] [6. Delete at Last]");
 
             System.out.print("Enter choice: ");
             int ch = sc.nextInt();
@@ -119,6 +153,12 @@ public class DLL {
                     val = sc.nextInt();
                     dll.insertFirst(val);
                     System.out.println("Added " + val + " at front");
+                    break;
+                case 5:
+                    dll.delFirst();
+                    break;
+                case 6:
+                    dll.delLast();
                     break;
                 default:
                     System.out.println("Wrong option try again!");
